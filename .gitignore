@@ -1,0 +1,7 @@
+.vscode/
+.build/
+**/modules/
+examples/example*.*
+!examples/example*.jai
+
+*.code-workspace
