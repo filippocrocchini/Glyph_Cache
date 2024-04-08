@@ -44,6 +44,16 @@ You can then bind a face and request glyphs either by codepoint or by index.
     glyph, found := Glyph_Cache.get_glyph(glyph_index);
 ```
 
+These are the useful members of the Cached_Glyph struct:
+
+```jai
+    x, y: int; // pixels
+    w, h: int; // pixels
+    bearing_x, bearing_y : int; // pixels (right handed)
+    advance_x, advance_y : int; // pixels (right handed)
+```
+Note that all members of this struct have already been scaled so that you only need to  
+
 It is **crucial** that you update the texture before you render your glyphs, you will have to draw text in two passes (see the examples). Simp does the same thing, you prepare the text, then you render the prepared glyphs.
 
 ```jai

@@ -47,16 +47,16 @@ commit_prepared_nodes :: ()
         t0 := it.texture_min.y;
         t1 := it.texture_min.y + it.texture_size.y;
 
-        p1 := Vector2.{ xx x0, xx y1 };
+        p1 := Vector2.{ xx x0, xx y0 };
         u1 := Vector2.{s0, t0};
 
-        p2 := Vector2.{ xx x0, xx y0 };
+        p2 := Vector2.{ xx x0, xx y1 };
         u2 := Vector2.{s0, t1};
 
-        p3 := Vector2.{ xx x1, xx y0 };
+        p3 := Vector2.{ xx x1, xx y1 };
         u3 := Vector2.{s1, t1};
 
-        p4 := Vector2.{ xx x1, xx y1 };
+        p4 := Vector2.{ xx x1, xx y0 };
         u4 := Vector2.{s1, t0};
 
         Simp.set_shader_for_images(it.texture);
@@ -110,14 +110,16 @@ draw_text :: (text: string, font: Glyph_Cache.Font_Face, pixels_per_em: u32, pos
 		baseline_origin := Vector2.{ cursor_x, cursor_y };
 
         x0 := baseline_origin.x + glyph.bearing_x;
-        y0 := baseline_origin.y + (glyph.h - glyph.bearing_y);
+        y0 := baseline_origin.y - glyph.bearing_y;
 
         node := array_add(*prepared_nodes);
 
         node.position_min.x = x0;
         node.position_min.y = y0;
         node.size.x = cast(float) glyph.w;
-        node.size.y = cast(float) -glyph.h;
+        node.size.y = cast(float) glyph.h;
+
+        print("%\n", glyph.h);
 
         s0_px := glyph.x;
         t0_px := glyph.y;
