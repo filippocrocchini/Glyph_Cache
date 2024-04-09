@@ -574,18 +574,11 @@ get_hash :: (face_index: u64, glyph_index: u64, pixels_per_em: u64) -> u64
 {
     Hash :: #import "Hash";
 
-    face_index_hash    := Hash.knuth_hash(face_index);
-    glyph_index_hash   := Hash.knuth_hash(glyph_index);
-    pixels_per_em_hash := Hash.knuth_hash(pixels_per_em);
+    data := u64.[face_index, glyph_index, pixels_per_em];
 
-    result := combine_hashes(face_index_hash, combine_hashes(glyph_index_hash, pixels_per_em_hash));
+    result := Hash.fnv1a_hash(data.data, data.count * size_of(u64));
+
     return result;
-}
-
-combine_hashes :: (a: u64, b: u64) -> u64 #no_aoc
-{
-    KNUTH_GOLDEN_RATIO_64 :: 11400714819323198485;
-    return a * KNUTH_GOLDEN_RATIO_64 + b;
 }
 
 cache    : Cache;
