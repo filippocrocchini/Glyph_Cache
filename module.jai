@@ -137,7 +137,7 @@ get_access_timestamp :: () -> u32
     return cache.access_timestamp;
 }
 
-peek_cache_bitmap :: (evict_after: u64) -> dirty : bool, bitmap : Bitmap #must
+peek_cache_bitmap :: (evict_after: u64) -> dirty : bool, bitmap : Bitmap
 {
     cache.access_timestamp += 1;
 

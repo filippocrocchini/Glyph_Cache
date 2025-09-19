@@ -1,3 +1,5 @@
+![Jai Version](https://img.shields.io/badge/Jai-0.2.017-blue)
+
 ## Glyph_Cache
 
 This is a module that helps you get text on screen quickly. Paired with [Harfbuzz](https://github.com/filippocrocchini/Harfbuzz) it lets you render any glyph in any font, any size, in any style including emojis*. You no longer need to preload some codepoints to generate a bitmap which you then use to render the text. The bitmap is generated for you, dynamically, based on the glyphs that you need.

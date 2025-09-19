@@ -119,7 +119,7 @@ draw_text :: (text: string, font: Glyph_Cache.Font_Face, pixels_per_em: u32, pos
         node.size.x = cast(float) glyph.w;
         node.size.y = cast(float) glyph.h;
 
-        print("%\n", glyph.h);
+        // print("%\n", glyph.h);
 
         s0_px := glyph.x;
         t0_px := glyph.y;
